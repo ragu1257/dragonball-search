@@ -1,8 +1,14 @@
+import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import CharacterList from "./components/CharacterList";
 import "./App.css";
+import useCharacters from "./hooks/useCharacters";
 
 function App() {
+  const [name, setName] = useState("");
+  const [kiRange, setKiRange] = useState({ min: "", max: "" });
+  const { characters, loading, error } = useCharacters(name, kiRange);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="max-w-4xl mx-auto p-6">
@@ -12,8 +18,15 @@ function App() {
       </header>
 
       <main className="max-w-4xl mx-auto p-4">
-        <SearchBar />
-        <CharacterList />
+        <SearchBar
+          name={name}
+          onNameChange={setName}
+          kiRange={kiRange}
+          onKiRangeChange={setKiRange}
+        />
+        {loading && <p className="text-center">Loading...</p>}
+        {error && <p className="text-red-500 text-center">Error: {error}</p>}
+        <CharacterList characters={characters} />
       </main>
     </div>
   );

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
+import useDebounce from "./hooks/useDebounce";
 import CharacterList from "./components/CharacterList";
 import "./App.css";
 import useCharacters from "./hooks/useCharacters";
@@ -7,7 +8,8 @@ import useCharacters from "./hooks/useCharacters";
 function App() {
   const [name, setName] = useState("");
   const [kiRange, setKiRange] = useState({ min: "", max: "" });
-  const { characters, loading, error } = useCharacters(name, kiRange);
+  const debouncedName = useDebounce(name, 500);
+  const { characters, loading, error } = useCharacters(debouncedName, kiRange);
 
   return (
     <div className="min-h-screen bg-gray-50">

@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import SearchBar from "./components/SearchBar";
+import CharacterList from "./components/CharacterList";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="min-h-screen bg-gray-50">
+      <header className="max-w-4xl mx-auto p-6">
+        <h1 className="text-3xl font-extrabold text-center text-indigo-600">
+          DragonBall Character Search
+        </h1>
       </header>
+
+      <main className="max-w-4xl mx-auto p-4">
+        <SearchBar />
+        <CharacterList />
+      </main>
     </div>
   );
 }

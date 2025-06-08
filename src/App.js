@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import useDebounce from "./hooks/useDebounce";
 import CharacterList from "./components/CharacterList";

@@ -1,12 +1,14 @@
 function CharacterCard({ character }) {
-  console.log(character);
-
   return (
     <div className="bg-white shadow-md hover:shadow-xl transition-shadow duration-300 rounded-xl p-5 flex flex-col items-center w-full max-w-sm">
       <div className="w-32 h-32 mb-4 overflow-hidden rounded-full border-4 border-indigo-100">
         <img
           src={character.image}
           alt={character.name}
+          width={128}
+          height={128}
+          loading="lazy"
+          decoding="async"
           className="object-cover w-full h-full"
         />
       </div>
